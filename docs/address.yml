@@ -1,0 +1,207 @@
+openapi: "3.0.2"
+info:
+  title: API Docs for Address
+  version: "1.0"
+  description: API description
+  termsOfService: https://swagger.io/terms/
+  contact:
+    name: Nap
+    url: https://napuniverse.me
+    email: naffsvn@protonmail.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: 127.0.0.1
+
+paths:
+  # CREATE Address
+  /api/contacts/{contact_id}/addresses:
+    post:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                street:
+                  type: string
+                city:
+                  type: string
+                province:
+                  type: string
+                country:
+                  type: string
+                postal_code:
+                  type: string
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      street:
+                        type: string
+                      city:
+                        type: string
+                      province:
+                        type: string
+                      country:
+                        type: string
+                      postal_code:
+                        type: string
+        "400":
+          description: Failed to get data
+    # List Address
+    get:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        street:
+                          type: string
+                        city:
+                          type: string
+                        province:
+                          type: string
+                        country:
+                          type: string
+                        postal_code:
+                          type: string
+        "400":
+          description: Failed to get data
+
+  # UPDATE Address
+  /api/contacts/{contact_id}/addresses/{id}:
+    put:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                street:
+                  type: string
+                city:
+                  type: string
+                province:
+                  type: string
+                country:
+                  type: string
+                postal_code:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      street:
+                        type: string
+                      city:
+                        type: string
+                      province:
+                        type: string
+                      country:
+                        type: string
+                      postal_code:
+                        type: string
+        "400":
+          description: Failed to update data
+
+    # GET Address
+    get:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      street:
+                        type: string
+                      city:
+                        type: string
+                      province:
+                        type: string
+                      country:
+                        type: string
+                      postal_code:
+                        type: string
+        "400":
+          description: Failed to get data
+
+    # DELETE Address
+    delete:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+        "400":
+          description: Failed to update data
