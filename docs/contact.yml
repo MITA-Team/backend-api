@@ -1,0 +1,239 @@
+openapi: "3.0.2"
+info:
+  title: API Docs for Contact
+  version: "1.0"
+  description: API description
+  termsOfService: https://swagger.io/terms/
+  contact:
+    name: Nap
+    url: https://napuniverse.me
+    email: naffsvn@protonmail.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: 127.0.0.1
+paths:
+  # CREATE Contact
+  /api/contacts:
+    post:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: integer
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: integer
+        "400":
+          description: Failed to get data
+
+  # UPDATE Contact
+  /api/contacts/{id}:
+    put:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: integer
+        "400":
+          description: Failed to update data
+
+    # GET Contact
+    get:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                      email:
+                        type: string
+                      phone:
+                        type: integer
+        "400":
+          description: Failed to get data
+
+    # DELETE Contact
+    delete:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+
+  # SEARCH Contact
+  /api/contacts/search:
+    get:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+        - in: query
+          name: first_name
+          schema:
+            type: string
+          description: Search by first name
+        - in: query
+          name: last_name
+          schema:
+            type: string
+          description: Search by last name
+        - in: query
+          name: email
+          schema:
+            type: string
+          description: Search by email
+        - in: query
+          name: phone
+          schema:
+            type: string
+          description: Search by phone
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Page number
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: Number of items per page
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        email:
+                          type: string
+                        phone:
+                          type: integer
+                  pagination:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                      page:
+                        type: integer
+                      limit:
+                        type: integer
+                      pages:
+                        type: integer
+                      next:
+                        type: string
+                      prev:
+                        type: string
+        "400":
+          description: Failed to get data

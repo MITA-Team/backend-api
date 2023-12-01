@@ -1,0 +1,167 @@
+openapi: "3.0.2"
+info:
+  title: API Docs for User
+  version: "1.0"
+  description: API description
+  termsOfService: https://swagger.io/terms/
+  contact:
+    name: Nap
+    url: https://napuniverse.me
+    email: naffsvn@protonmail.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: 127.0.0.1
+paths:
+  # CREATE User
+  /api/users:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                name:
+                  type: string
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      username:
+                        type: string
+                      password:
+                        type: string
+                      name:
+                        type: string
+        "400":
+          description: Username already exists
+          
+  # LOGIN User
+  /api/users/login:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+        "401":
+          description: Unauthorized
+
+  # UPDATE User
+  /api/users/{id}:
+    patch:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                name:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      username:
+                        type: string
+                      name:
+                        type: string
+        "400":
+          description: Failed to update data
+
+  # GET User
+    get:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      username:
+                        type: string
+                      name:
+                        type: string
+        "400":
+          description: Failed to get data
+  
+  # LOGOUT User
+  /api/users/logout:
+    delete:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+        "401":
+          description: Unauthorized
