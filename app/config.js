@@ -13,6 +13,7 @@ try {
 }
 
 const db = admin.firestore();
-const Collection = db.collection("question");
+const questCollection = db.collection("question");
+const therapyCollection = db.collection("therapyRecommendation");
 
-module.exports = Collection;
+module.exports = { questCollection, therapyCollection };

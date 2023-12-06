@@ -1,4 +1,4 @@
-const Collection = require("../app/config");
+const { questCollection } = require("../app/config");
 
 exports.welcome = (req, res) => {
   res.send({
@@ -13,7 +13,7 @@ exports.welcome = (req, res) => {
 
 exports.showQuestion = async (req, res) => {
   try {
-    const snapshot = await Collection.get();
+    const snapshot = await questCollection.get();
     const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     res.send(list);
   } catch (error) {
@@ -25,9 +25,9 @@ exports.showQuestion = async (req, res) => {
 exports.createQuestion = async (req, res) => {
   try {
     const data = req.body;
-    await Collection.add({ data });
+    await questCollection.add({ data });
     res.send({ 
-      message: "Added success",
+      message: "Successfully added data!",
       status: 200,
       data: {
         question: data,
@@ -37,4 +37,19 @@ exports.createQuestion = async (req, res) => {
     console.error("Error adding data:", error);
     res.status(500).send({ error: "Internal Server Error" });
   }
-}
+};
+
+exports.showQuestionById = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const doc = await questCollection.doc(id).get();
+    if (!doc.exists) {
+      res.status(404).send({ message: "Question not found" });
+    } else {
+      res.send(doc.data());
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+};

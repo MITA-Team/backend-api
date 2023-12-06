@@ -1,16 +1,19 @@
 ### Welcome
-GET http://localhost:8080/api/question/
+GET http://localhost:8080/api/
 
 ### GET All Soal
 GET http://localhost:8080/api/question/all
 
-### 
+### GET Soal by Id
+GET http://localhost:8080/api/question/Lcfzhr40T37ufB6O8IhG
+
+### POST Soal
 POST http://localhost:8080/api/question
 Content-Type: application/json
 
 {
   "question": "Apakah anak Tidak melihat ketika namanya dipanggil",
-  "category": "A2",
+  "category": "A4",
   "type": [
     "Speech/Language/Communication",
     "Sociability",
@@ -18,12 +21,28 @@ Content-Type: application/json
   ]
 }
 
+### GET All Therapy
+GET http://localhost:8080/api/therapy/all
 
-###
-POST http://localhost:8080/signup
+### GET Therapy by Id
+GET http://localhost:8080/api/therapy/QQPfLmVxfHbddh5KQHkg
+
+### POST Therapy Recommendation
+POST http://localhost:8080/api/therapy
 Content-Type: application/json
 
 {
-    "email":"emailtes@napuniverse.me",
-    "password":"123awdwd"
+  "therapy": "Menirukan suara hewan",
+  "category": "A1",
+  "type": [
+    "Speech/Language/Communication",
+    "Sociability",
+    "Sensori/Kognitif"
+  ],
+  "description":[
+    "Ayah atau Ibu atau orang yang bertanggungjawab lainnya dapat memberikan anak mainan yang berupa hewan.",
+    "Setiap bermain dengan mainan tersebut bersama anak, tirukan suara dari hewan tersebut. (meong, mbeeek, dsb)",
+    "Lakukan sesering mungkin, namun tidak  terlalu lama (5-10 menit setiap hari).",
+    "Jika dirasa tidak ada perubahan, silahkan pertemukan anak dengan orang profesional untuk penanganan lebih"
+  ]
 }

@@ -1,12 +1,17 @@
 module.exports = (app) => {
-    const authController = require("../controllers/authController.js");
-    const router = require("express").Router();
-  
-    router.get("/", authController.welcome);
-    router.get("/all", authController.showQuestion);
-    router.post("/", authController.createQuestion);
+  const questController = require("../controllers/questController.js");
+  const therapyController = require("../controllers/therapyController.js");
+  const router = require("express").Router();
 
-  
-    app.use("/api/question", router);
-  };
-  
+  router.get("/", questController.welcome);
+  router.get("/question/all", questController.showQuestion);
+  router.get("/question/:id", questController.showQuestionById);
+  router.post("/question/", questController.createQuestion);
+
+
+  router.get("/therapy/all", therapyController.showTherapy);
+  router.get("/therapy/:id", therapyController.showTherapyById);
+  router.post("/therapy/", therapyController.createTherapy);
+
+  app.use("/api/", router);
+};
