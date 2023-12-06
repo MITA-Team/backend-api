@@ -19,7 +19,7 @@ exports.showQuestion = async (req, res) => {
     const snapshot = await questCollection.get();
     const list = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     res.send({
-      message: "Successfully retrieved therapy data!",
+      message: "Successfully retrieved question data!",
       status: 200,
       data: {
         question: list,
@@ -60,7 +60,7 @@ exports.showQuestionById = async (req, res) => {
     } else {
       const therapyData = doc.data();
       res.send({
-        message: "Successfully retrieved therapy data by ID!",
+        message: "Successfully retrieved question data by ID!",
         status: 200,
         data: {
           question: therapyData,

@@ -14,6 +14,8 @@ require("./routes/authRoutes")(app);
 
 const port = process.env.PORT || 8080;
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`\nServer running on port ${port}`);
 });
+
+module.exports = { app, server };
