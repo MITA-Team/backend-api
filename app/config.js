@@ -5,7 +5,7 @@ const serviceAccount = require("../serviceAccountKey.json");
 try {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://latihan-capstone-default-rtdb.asia-southeast1.firebasedatabase.app",
+    databaseURL: process.env.FIREBASE_DATABASE_URL,
   });
 } catch (error) {
   console.error("Gagal Connect ke Firebase:", error);
@@ -13,7 +13,15 @@ try {
 }
 
 const db = admin.firestore();
+const auth = admin.auth();
+
 const questCollection = db.collection("question");
 const therapyCollection = db.collection("therapyRecommendation");
+const childCollection = db.collection("childs");
 
-module.exports = { questCollection, therapyCollection };
+module.exports = { 
+  questCollection, 
+  therapyCollection,
+  childCollection,
+  auth
+};

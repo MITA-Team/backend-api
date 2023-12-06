@@ -1,0 +1,17 @@
+### GET All Child
+GET http://localhost:8080/api/child/all
+
+### GET Child by Id
+GET http://localhost:8080/api/child/zkxStXArGLSs0PMxKtGZ
+
+### POST Data Child
+POST http://localhost:8080/api/child
+Content-Type: application/json
+
+{
+    "nama": "emailtes1@gulugulugle.com",
+    "tanggal_lahir": "123awdwd",
+    "domisili": "Kota",
+    "keluhan": "Sakit",
+    "rekomendasi": "Duit"
+}

@@ -1,0 +1,14 @@
+### GET All User
+GET http://localhost:8080/api/user/all
+
+### GET User by Id
+GET http://localhost:8080/api/user/JUCtlnRoDqbRMFc2OO4IwzitcMa2
+
+### POST Register User
+POST http://localhost:8080/api/user/register
+Content-Type: application/json
+
+{
+    "email":"nap123@napuniverse.me",
+    "password":"testp4ssw0rd"
+}
