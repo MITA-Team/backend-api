@@ -1,0 +1,29 @@
+### Welcome
+GET http://localhost:8080/api/question/
+
+### GET All Soal
+GET http://localhost:8080/api/question/all
+
+### 
+POST http://localhost:8080/api/question
+Content-Type: application/json
+
+{
+  "question": "Apakah anak Tidak melihat ketika namanya dipanggil",
+  "category": "A2",
+  "type": [
+    "Speech/Language/Communication",
+    "Sociability",
+    "Sensori/Kognitif"
+  ]
+}
+
+
+###
+POST http://localhost:8080/signup
+Content-Type: application/json
+
+{
+    "email":"emailtes@napuniverse.me",
+    "password":"123awdwd"
+}
