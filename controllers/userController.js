@@ -66,3 +66,73 @@ exports.showUserById = async (req, res) => {
     res.status(500).send({ error: "Internal Server Error" });
   }
 };
+
+exports.showUserByEmail = async (req, res) => {
+  const userEmail = req.params.email;
+
+  try {
+    console.info(req.method, req.url);
+
+    const userRecord = await auth.getUserByEmail(userEmail);
+
+    if (!userRecord) {
+      res.status(404).send({ message: "User not found" });
+      return;
+    }
+
+    const userData = userRecord.toJSON();
+
+    res.send({
+      message: "Successfully retrieved user data by email!",
+      status: 200,
+      data: {
+        user: {
+          uid: userData.uid,
+          email: userData.email,
+          emailVerified: userData.emailVerified,
+          disabled: userData.disabled,
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error retrieving user data by email:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+};
+
+exports.updateUser = async (req, res) => {
+  const userId = req.params.id;
+  const dataToUpdate = req.body;
+
+  try {
+    console.info(req.method, req.url);
+    console.info(req.body);
+
+    const userRecord = await auth.getUser(userId);
+    if (!userRecord) {
+      res.status(404).send({ message: "User not found" });
+      return;
+    }
+
+    await auth.updateUser(userId, dataToUpdate);
+
+    const updatedUserRecord = await auth.getUser(userId);
+    const updatedUserData = updatedUserRecord.toJSON();
+
+    res.send({
+      message: "Successfully updated user data!",
+      status: 200,
+      data: {
+        user: {
+          uid: updatedUserData.uid,
+          email: updatedUserData.email,
+          emailVerified: updatedUserData.emailVerified,
+          disabled: updatedUserData.disabled,
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error updating user data:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+};

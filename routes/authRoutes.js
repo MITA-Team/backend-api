@@ -19,11 +19,14 @@ module.exports = (app) => {
 
   router.get("/user/all", userController.showUser);
   router.get("/user/:id", userController.showUserById);
+  router.get("/user/email/:email", userController.showUserByEmail);
   router.post("/user/register", userController.createUser);
+  router.put("/user/:id", userController.updateUser);
 
   router.get("/child/all", childController.showChild);
   router.get("/child/:id", childController.showChildById);
   router.post("/child/", childController.createChild);
+  router.put("/child/:id", childController.updateChild);
 
   app.use("/api/", router);
 };

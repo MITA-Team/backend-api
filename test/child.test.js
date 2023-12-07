@@ -15,15 +15,41 @@ describe("GET All Child", () => {
         child: expect.arrayContaining([
           expect.objectContaining({
             id: expect.any(String),
-            data: expect.objectContaining({
-              nama: expect.any(String),
-              rekomendasi: expect.any(String),
-              domisili: expect.any(String),
-              tanggal_lahir: expect.any(String),
-              keluhan: expect.any(String),
-            }),
+            data: {
+              name: expect.any(String),
+              born: expect.any(String),
+              city: expect.any(String),
+              diagnose: expect.any(String),
+              recommendation: expect.arrayContaining([expect.any(String)]),
+            },
           }),
         ]),
+      },
+    };
+
+    expect(response.body).toEqual(expectedResponseBody);
+  }, 10000);
+});
+
+describe("GET Child by Id", () => {
+  it("should return a child by ID", async () => {
+    const userId = "cm9YOzZgX1awJvUTKE5V";
+    const response = await request(app).get(`/api/child/${userId}`);
+    expect(response.status).toBe(200);
+
+    const expectedResponseBody = {
+      message: "Successfully retrieved child data by ID!",
+      status: 200,
+      data: {
+        child: {
+          data: {
+            name: expect.any(String),
+            born: expect.any(String),
+            city: expect.any(String),
+            diagnose: expect.any(String),
+            recommendation: expect.arrayContaining([expect.any(String)]),
+          },
+        },
       },
     };
 

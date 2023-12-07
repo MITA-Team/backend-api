@@ -2,7 +2,10 @@
 GET http://localhost:8080/api/user/all
 
 ### GET User by Id
-GET http://localhost:8080/api/user/JUCtlnRoDqbRMFc2OO4IwzitcMa2
+GET http://localhost:8080/api/user/sJUBzpL17OhYldHKbL2Lkj05YRs1
+
+### GET User by Email
+GET http://localhost:8080/api/user/email/nap@napuniverse.me
 
 ### POST Register User
 POST http://localhost:8080/api/user/register
@@ -10,5 +13,14 @@ Content-Type: application/json
 
 {
     "email":"nap123@napuniverse.me",
+    "password":"testp4ssw0rd"
+}
+
+### UPDATE User
+PUT http://localhost:8080/api/user/sJUBzpL17OhYldHKbL2Lkj05YRs1
+Content-Type: application/json
+
+{
+    "email":"inapzky@napuniverse.me",
     "password":"testp4ssw0rd"
 }
