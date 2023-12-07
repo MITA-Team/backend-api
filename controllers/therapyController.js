@@ -8,9 +8,7 @@ exports.showTherapy = async (req, res) => {
     res.send({
         message: "Successfully retrieved therapy data!",
         status: 200,
-        data: {
-          therapy: list,
-        },
+        list
       });
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -45,13 +43,11 @@ exports.showTherapyById = async (req, res) => {
     if (!doc.exists) {
       res.status(404).send({ message: "Therapy not found" });
     } else {
-      const therapyData = doc.data();
+      const list = doc.data();
       res.send({
         message: "Successfully retrieved therapy data by ID!",
         status: 200,
-        data: {
-          therapy: therapyData,
-        },
+        list
       });
     }
   } catch (error) {

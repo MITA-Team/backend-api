@@ -24,3 +24,6 @@ Content-Type: application/json
     "email":"inapzky@napuniverse.me",
     "password":"testp4ssw0rd"
 }
+
+### DELETE User
+DELETE http://localhost:8080/api/user/JzGnk77UQ5WAjSbXtfPrjQHagQt2

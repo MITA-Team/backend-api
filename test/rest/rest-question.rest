@@ -5,7 +5,7 @@ GET http://localhost:8080/api/
 GET http://localhost:8080/api/question/all
 
 ### GET Soal by Id
-GET http://localhost:8080/api/question/Lcfzhr40T37ufB6O8IhG
+GET http://localhost:8080/api/question/FaZ2EtCKDMOAhzJhlL0K
 
 ### POST Soal
 POST http://localhost:8080/api/question

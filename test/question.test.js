@@ -11,18 +11,14 @@ describe("GET All Question", () => {
     const expectedResponseBody = {
       message: "Successfully retrieved question data!",
       status: 200,
-      data: {
-        question: expect.arrayContaining([
-          expect.objectContaining({
-            id: expect.any(String),
-            data: expect.objectContaining({
-              question: expect.any(String),
-              category: expect.any(String),
-              type: expect.arrayContaining([expect.any(String)]),
-            }),
-          }),
-        ]),
-      },
+      list: ([{
+        id: expect.any(String),
+        data: expect.objectContaining({
+          question: expect.any(String),
+          category: expect.any(String),
+          type: expect.arrayContaining([expect.any(String)]),
+        }),
+      }]),
     };
 
     expect(response.body).toEqual(expectedResponseBody);
@@ -31,22 +27,20 @@ describe("GET All Question", () => {
 
 describe("GET Question by Id", () => {
   it("should return a question by ID", async () => {
-    const userId = "Lcfzhr40T37ufB6O8IhG";
+    const userId = "FaZ2EtCKDMOAhzJhlL0K";
     const response = await request(app).get(`/api/question/${userId}`);
     expect(response.status).toBe(200);
 
     const expectedResponseBody = {
       message: "Successfully retrieved question data by ID!",
       status: 200,
-      data: {
-        question: {
-          data: {
-            question: expect.any(String),
-            category: expect.any(String),
-            type: expect.arrayContaining([expect.any(String)]),
-          },
-        },
-      },
+      list: ({
+        data: expect.objectContaining({
+          question: expect.any(String),
+          category: expect.any(String),
+          type: expect.arrayContaining([expect.any(String)]),
+        }),
+      }),
     };
 
     expect(response.body).toEqual(expectedResponseBody);

@@ -47,7 +47,7 @@ exports.showChildById = async (req, res) => {
       res.send({
         message: "Successfully retrieved child data by ID!",
         status: 200,
-          child: childData,
+        child: childData,
       });
     }
   } catch (error) {
@@ -57,31 +57,53 @@ exports.showChildById = async (req, res) => {
 };
 
 exports.updateChild = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    console.info(req.method, req.url);
+    console.info(req.body);
+
+    const userRecord = await childCollection.doc(id).get();
+    if (!userRecord.exists) {
+      res.status(404).send({ message: "Child not found" });
+      return;
+    }
+
+    delete req.params.id;
+    const data = req.body;
+
+    await childCollection.doc(id).update({ data });
+
+    res.send({
+      message: "Successfully updated child data by ID!",
+      status: 200,
+      data,
+    });
+  } catch (error) {
+    console.error("Error updating child data:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+};
+
+exports.deleteChild = async (req, res) => {
     const id = req.params.id;
 
     try {
-      console.info(req.method, req.url);
-      console.info(req.body);
+        console.info(req.method, req.url);
+        const userRecord = await childCollection.doc(id).get();
+        if (!userRecord.exists) {
+            res.status(404).send({ message: "Child not found" });
+            return;
+        }
 
-      const userRecord = await childCollection.doc(id).get();
-      if(!userRecord.exists) {
-        res.status(404).send({ message: "Child not found" });
-        return
-      }
-  
-      delete req.params.id;
-      const data = req.body
+        await childCollection.doc(id).delete();
 
-      await childCollection.doc(id).update({ data });
-  
-      res.send({
-        message: "Successfully updated child data by ID!",
-        status: 200,
-            data
-      });
+        res.send({
+            message: "Successfully deleted child data by ID!",
+            status: 200,
+        });
     } catch (error) {
-      console.error("Error updating child data:", error);
-      res.status(500).send({ error: "Internal Server Error" });
+        console.error("Error deleting child data:", error);
+        res.status(500).send({ error: "Internal Server Error" });
     }
-  };
-  
+}

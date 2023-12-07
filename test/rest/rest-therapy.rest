@@ -2,24 +2,26 @@
 GET http://localhost:8080/api/therapy/all
 
 ### GET Therapy by Id
-GET http://localhost:8080/api/therapy/QQPfLmVxfHbddh5KQHkg
+GET http://localhost:8080/api/therapy/MyCAK7CmRVcj26VlDoXG
 
 ### POST Therapy Recommendation
 POST http://localhost:8080/api/therapy
 Content-Type: application/json
 
 {
-  "therapy": "Menirukan suara hewan",
   "category": "A1",
   "type": [
     "Speech/Language/Communication",
     "Sociability",
     "Sensori/Kognitif"
   ],
-  "description":[
-    "Ayah atau Ibu atau orang yang bertanggungjawab lainnya dapat memberikan anak mainan yang berupa hewan.",
-    "Setiap bermain dengan mainan tersebut bersama anak, tirukan suara dari hewan tersebut. (meong, mbeeek, dsb)",
-    "Lakukan sesering mungkin, namun tidak  terlalu lama (5-10 menit setiap hari).",
-    "Jika dirasa tidak ada perubahan, silahkan pertemukan anak dengan orang profesional untuk penanganan lebih"
-  ]
+  "therapy": {
+    "name": "Menirukan suara hewan",
+    "description": [
+      "Ayah atau Ibu atau orang yang bertanggungjawab lainnya dapat memberikan anak mainan yang berupa hewan.",
+      "Setiap bermain dengan mainan tersebut bersama anak, tirukan suara dari hewan tersebut. (meong, mbeeek, dsb)",
+      "Lakukan sesering mungkin, namun tidak terlalu lama (5-10 menit setiap hari).",
+      "Jika dirasa tidak ada perubahan, silahkan pertemukan anak dengan orang profesional untuk penanganan lebih"
+    ]
+  }
 }

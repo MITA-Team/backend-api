@@ -11,7 +11,6 @@ describe("GET All Child", () => {
     const expectedResponseBody = {
       message: "Successfully retrieved child data!",
       status: 200,
-      data: {
         child: expect.arrayContaining([
           expect.objectContaining({
             id: expect.any(String),
@@ -19,39 +18,37 @@ describe("GET All Child", () => {
               name: expect.any(String),
               born: expect.any(String),
               city: expect.any(String),
+              gender: expect.any(String),
               diagnose: expect.any(String),
               recommendation: expect.arrayContaining([expect.any(String)]),
             },
           }),
         ]),
-      },
-    };
-
+      };
     expect(response.body).toEqual(expectedResponseBody);
   }, 10000);
 });
 
 describe("GET Child by Id", () => {
   it("should return a child by ID", async () => {
-    const userId = "cm9YOzZgX1awJvUTKE5V";
+    const userId = "DndDLpRT4195V69kVTWJ";
     const response = await request(app).get(`/api/child/${userId}`);
     expect(response.status).toBe(200);
 
     const expectedResponseBody = {
       message: "Successfully retrieved child data by ID!",
       status: 200,
-      data: {
         child: {
           data: {
             name: expect.any(String),
             born: expect.any(String),
             city: expect.any(String),
+            gender: expect.any(String),
             diagnose: expect.any(String),
             recommendation: expect.arrayContaining([expect.any(String)]),
           },
         },
-      },
-    };
+      };
 
     expect(response.body).toEqual(expectedResponseBody);
   }, 10000);

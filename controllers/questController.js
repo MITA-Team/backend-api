@@ -5,10 +5,23 @@ exports.welcome = (req, res) => {
     message: "Welcome to MITA APP API.",
     status: 200,
     content: {
-      "GET /api/question/all": "Get all questions",
-      "GET /api/question/:id": "Get question by id",
-      "GET /api/therapy/all": "Get all therapies",
-      "GET /api/therapy/:id": "Get therapy by id",
+      "user" : [
+        "GET /api/user/all",
+        "GET /api/user/:id",
+        "GET /user/email/:email",
+      ],
+      "child" : [
+        "GET /api/child/all",
+        "GET /api/child/:id",
+      ],
+      "question" : [
+        "GET /api/question/all",
+        "GET /api/question/:id",
+      ],
+      "therapy" : [
+        "GET /api/therapy/all",
+        "GET /api/therapy/:id",
+      ],
     },
   });
 };
@@ -21,9 +34,7 @@ exports.showQuestion = async (req, res) => {
     res.send({
       message: "Successfully retrieved question data!",
       status: 200,
-      data: {
-        question: list,
-      },
+      list,
     });
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -40,9 +51,7 @@ exports.createQuestion = async (req, res) => {
     res.send({ 
       message: "Successfully added data!",
       status: 200,
-      data: {
-        question: data,
-      } 
+      data,
     });
   } catch (error) {
     console.error("Error adding data:", error);
@@ -58,13 +67,11 @@ exports.showQuestionById = async (req, res) => {
     if (!doc.exists) {
       res.status(404).send({ message: "Question not found" });
     } else {
-      const therapyData = doc.data();
+      const list = doc.data();
       res.send({
         message: "Successfully retrieved question data by ID!",
         status: 200,
-        data: {
-          question: therapyData,
-        },
+        list,
       });
     }
   } catch (error) {

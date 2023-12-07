@@ -35,3 +35,6 @@ Content-Type: application/json
         "Social therapy"
     ]
 }
+
+### DELETE Child
+DELETE http://localhost:8080/api/child/jXqyDiZo6xKUynrr50tF
