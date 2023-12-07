@@ -24,7 +24,7 @@ exports.createChild = async (req, res) => {
     await childCollection.add({ data });
     res.send({
       message: "Successfully added data!",
-      status: 200,
+      status: 201,
       data: {
         child: data,
       },

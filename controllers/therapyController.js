@@ -24,7 +24,7 @@ exports.createTherapy = async (req, res) => {
     await therapyCollection.add({ data });
     res.send({
       message: "Successfully added data!",
-      status: 200,
+      status: 201,
       data: {
         therapy: data,
       },

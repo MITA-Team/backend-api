@@ -50,7 +50,7 @@ exports.createQuestion = async (req, res) => {
     await questCollection.add({ data });
     res.send({ 
       message: "Successfully added data!",
-      status: 200,
+      status: 201,
       data,
     });
   } catch (error) {
