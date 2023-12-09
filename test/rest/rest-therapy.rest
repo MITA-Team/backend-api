@@ -9,7 +9,7 @@ POST http://localhost:8080/api/therapy
 Content-Type: application/json
 
 {
-  "category": "A1",
+  "category": "A2",
   "type": [
     "Speech/Language/Communication",
     "Sociability",

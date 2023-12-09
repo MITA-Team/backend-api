@@ -25,12 +25,27 @@ exports.createUser = async (req, res) => {
   try {
     console.info(req.method, req.url);
     console.info(req.body);
+  
+    const expectedFormat = ["email", "password"];
+    const inputFormat = Object.keys(req.body);
+
+    const availabeFormat = expectedFormat.every((key) => inputFormat.includes(key));
+
+    const hasNoExtraFormat = inputFormat.every((key) => expectedFormat.includes(key));
+
+    if (!availabeFormat || !hasNoExtraFormat) {
+      return res.status(400).send({
+        error: "Invalid request format. Please provide all required fields without extra fields.",
+      });
+    }
+
     const data = await auth.createUser({
       email: req.body.email,
       password: req.body.password,
       emailVerified: false,
       disabled: false,
     });
+
     res.send({
       message: "Successfully added data!",
       status: 201,
@@ -159,4 +174,5 @@ exports.deleteUser = async (req, res) => {
     console.error("Error deleting user data:", error);
     res.status(500).send({ error: "Internal Server Error" });
   }
-}
+};
+

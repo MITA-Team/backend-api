@@ -38,6 +38,7 @@ describe("GET Child by Id", () => {
     const expectedResponseBody = {
       message: "Successfully retrieved child data by ID!",
       status: 200,
+      id: expect.any(String),
         child: {
           data: {
             name: expect.any(String),

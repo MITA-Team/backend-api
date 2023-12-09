@@ -11,14 +11,16 @@ describe("GET All Question", () => {
     const expectedResponseBody = {
       message: "Successfully retrieved question data!",
       status: 200,
-      list: ([{
-        id: expect.any(String),
-        data: expect.objectContaining({
-          question: expect.any(String),
-          category: expect.any(String),
-          type: expect.arrayContaining([expect.any(String)]),
-        }),
-      }]),
+      list: expect.arrayContaining([
+        {
+          id: expect.any(String),
+          data: expect.objectContaining({
+            question: expect.any(String),
+            category: expect.any(String),
+            type: expect.arrayContaining([expect.any(String)]),
+          }),
+        },
+      ]),
     };
 
     expect(response.body).toEqual(expectedResponseBody);
@@ -27,7 +29,7 @@ describe("GET All Question", () => {
 
 describe("GET Question by Id", () => {
   it("should return a question by ID", async () => {
-    const userId = "FaZ2EtCKDMOAhzJhlL0K";
+    const userId = "5Z8t1e7aEGgDUafSdAN0";
     const response = await request(app).get(`/api/question/${userId}`);
     expect(response.status).toBe(200);
 

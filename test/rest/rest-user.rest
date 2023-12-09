@@ -12,8 +12,8 @@ POST http://localhost:8080/api/user/register
 Content-Type: application/json
 
 {
-    "email":"nap123@napuniverse.me",
-    "password":"testp4ssw0rd"
+    "email":"fidelas@mail.com",
+    "password":"12345678"
 }
 
 ### UPDATE User
@@ -26,4 +26,4 @@ Content-Type: application/json
 }
 
 ### DELETE User
-DELETE http://localhost:8080/api/user/JzGnk77UQ5WAjSbXtfPrjQHagQt2
+DELETE http://localhost:8080/api/user/dAwxlFUKkhQfiJr08Pi0H0K95eB3

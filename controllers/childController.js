@@ -20,15 +20,37 @@ exports.createChild = async (req, res) => {
   try {
     console.info(req.method, req.url);
     console.info(req.body);
+
+    const expectedFormat = ["name", "born", "city", "gender", "diagnose", "recommendation"];
+
+    const inputFormat = Object.keys(req.body);
+
+    const availabeFormat = expectedFormat.every((key) => inputFormat.includes(key));
+
+    const hasNoExtraFormat = inputFormat.every((key) => expectedFormat.includes(key));
+
+    if (!availabeFormat || !hasNoExtraFormat) {
+      return res.status(400).send({
+        error: "Invalid request format. Please provide all required fields without extra fields.",
+      });
+    }
+
     const data = req.body;
-    await childCollection.add({ data });
-    res.send({
+
+    const addAllData = await childCollection.add({ data });
+
+    const response = {
       message: "Successfully added data!",
       status: 201,
-      data: {
-        child: data,
-      },
-    });
+      data: [
+        {
+          id: addAllData.id,
+          child: data,
+        },
+      ],
+    };
+
+    res.status(response.status).send(response);
   } catch (error) {
     console.error("Error adding data:", error);
     res.status(500).send({ error: "Internal Server Error" });
@@ -47,6 +69,7 @@ exports.showChildById = async (req, res) => {
       res.send({
         message: "Successfully retrieved child data by ID!",
         status: 200,
+        id: doc.id,
         child: childData,
       });
     }
@@ -69,6 +92,20 @@ exports.updateChild = async (req, res) => {
       return;
     }
 
+    const expectedFormat = ["name", "born", "city", "gender", "diagnose", "recommendation"];
+
+    const inputFormat = Object.keys(req.body);
+
+    const availabeFormat = expectedFormat.every((key) => inputFormat.includes(key));
+
+    const hasNoExtraFormat = inputFormat.every((key) => expectedFormat.includes(key));
+
+    if (!availabeFormat || !hasNoExtraFormat) {
+        return res.status(400).send({
+          error: "Invalid request format. Please provide all required fields without extra fields.",
+        });
+      }
+
     delete req.params.id;
     const data = req.body;
 
@@ -86,24 +123,24 @@ exports.updateChild = async (req, res) => {
 };
 
 exports.deleteChild = async (req, res) => {
-    const id = req.params.id;
+  const id = req.params.id;
 
-    try {
-        console.info(req.method, req.url);
-        const userRecord = await childCollection.doc(id).get();
-        if (!userRecord.exists) {
-            res.status(404).send({ message: "Child not found" });
-            return;
-        }
-
-        await childCollection.doc(id).delete();
-
-        res.send({
-            message: "Successfully deleted child data by ID!",
-            status: 200,
-        });
-    } catch (error) {
-        console.error("Error deleting child data:", error);
-        res.status(500).send({ error: "Internal Server Error" });
+  try {
+    console.info(req.method, req.url);
+    const userRecord = await childCollection.doc(id).get();
+    if (!userRecord.exists) {
+      res.status(404).send({ message: "Child not found" });
+      return;
     }
-}
+
+    await childCollection.doc(id).delete();
+
+    res.send({
+      message: "Successfully deleted child data by ID!",
+      status: 200,
+    });
+  } catch (error) {
+    console.error("Error deleting child data:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+};

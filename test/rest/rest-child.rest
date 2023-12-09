@@ -37,4 +37,4 @@ Content-Type: application/json
 }
 
 ### DELETE Child
-DELETE http://localhost:8080/api/child/jXqyDiZo6xKUynrr50tF
+DELETE http://localhost:8080/api/child/KWFyFGxUogkQAU7GdjQ8
