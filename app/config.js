@@ -18,10 +18,12 @@ const auth = admin.auth();
 const questCollection = db.collection("question");
 const therapyCollection = db.collection("therapyRecommendation");
 const childCollection = db.collection("childs");
+const usersCollection = db.collection("user");
 
 module.exports = { 
   questCollection, 
   therapyCollection,
   childCollection,
+  usersCollection,
   auth,
 };
