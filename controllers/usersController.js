@@ -17,7 +17,7 @@ exports.showUsersById = async (req, res) => {
           username: userData.username,
           email: userData.email,
           domicile: userData.domicile,
-          birtDate: userData.birthDate,
+          birthDate: userData.birthDate,
         }
       });
     }
@@ -83,7 +83,7 @@ exports.deleteUsers = async (req, res) => {
       status: 200,
     });
   } catch (error) {
-    console.error("Error deleting child data:", error);
+    console.error("Error deleting user data:", error);
     res.status(500).send({ error: "Internal Server Error" });
   }
 };

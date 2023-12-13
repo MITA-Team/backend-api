@@ -1,29 +1,40 @@
-### GET All User
-GET http://localhost:8080/api/user/all
-
 ### GET User by Id
-GET http://localhost:8080/api/user/sJUBzpL17OhYldHKbL2Lkj05YRs1
+GET http://localhost:8080/api/users/Z1KiPS9E4JDuGXG5T91Q
 
-### GET User by Email
-GET http://localhost:8080/api/user/email/nap@napuniverse.me
+### PUT User by Id
+PUT http://localhost:8080/api/users/Z1KiPS9E4JDuGXG5T91Q
+Content-Type: application/json
+{
+"username" : "one",
+"email" : "onesimus@gmail.com",
+"domicile":  "sulawesi",
+"birthDate" : "123456"
+}
 
-### POST Register User
-POST http://localhost:8080/api/user/register
+### DELETE Register User
+DELETE http://localhost:8080/api/users/Z1KiPS9E4JDuGXG5T91Q
+
+### POST
+POST http://localhost:8080/api/users/login
 Content-Type: application/json
 
 {
-    "email":"fidelas@mail.com",
-    "password":"12345678"
+    "identifier":"onesimus@gmail.com",
+    "password":"123456"
 }
 
-### UPDATE User
-PUT http://localhost:8080/api/user/sJUBzpL17OhYldHKbL2Lkj05YRs1
+### POST
+POST http://localhost:8080/api/users/logout
 Content-Type: application/json
 
+### POST
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
 {
-    "email":"inapzky@napuniverse.me",
-    "password":"testp4ssw0rd"
+"username" : "one",
+"email" : "onesimus@gmail.com",
+"domicile":  "jakarta",
+"birthDate" : "123456",
+"password" :  "123456",
+"confirmPass" : "123456"
 }
-
-### DELETE User
-DELETE http://localhost:8080/api/user/dAwxlFUKkhQfiJr08Pi0H0K95eB3
