@@ -2,7 +2,7 @@
 GET http://localhost:8080/api/users/Z1KiPS9E4JDuGXG5T91Q
 
 ### PUT User by Id
-PUT http://localhost:8080/api/users/Z1KiPS9E4JDuGXG5T91Q
+PUT http://localhost:8080/api/users/update/Z1KiPS9E4JDuGXG5T91Q
 Content-Type: application/json
 {
 "username" : "one",
@@ -11,10 +11,10 @@ Content-Type: application/json
 "birthDate" : "123456"
 }
 
-### DELETE Register User
-DELETE http://localhost:8080/api/users/Z1KiPS9E4JDuGXG5T91Q
+### DELETE User
+DELETE http://localhost:8080/api/users/delete/Z1KiPS9E4JDuGXG5T91Q
 
-### POST
+### POST login
 POST http://localhost:8080/api/users/login
 Content-Type: application/json
 
@@ -23,11 +23,11 @@ Content-Type: application/json
     "password":"123456"
 }
 
-### POST
+### POST logout
 POST http://localhost:8080/api/users/logout
 Content-Type: application/json
 
-### POST
+### POST Data user
 POST http://localhost:8080/api/users/register
 Content-Type: application/json
 {

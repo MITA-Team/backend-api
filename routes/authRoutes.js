@@ -30,8 +30,8 @@ module.exports = (app) => {
   
   // Users DB
   router.get("/users/:id", usersController.showUsersById);
-  router.put("/users/:id", usersController.updateUsers);
-  router.delete("/users/:id", usersController.deleteUsers);
+  router.put("/users/update/:id", usersController.updateUsers);
+  router.delete("/users/delete/:id", usersController.deleteUsers);
   router.post("/users/login", usersController.loginUsers);
   router.post("/users/logout", usersController.logoutUsers);
   router.post("/users/register", usersController.createUsers);
