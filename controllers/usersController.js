@@ -1,10 +1,13 @@
 const bcrypt = require("bcrypt");
 const { usersCollection } = require("../app/config");
+const jwt = require("jsonwebtoken");
+const { blacklistToken } = require("../middleware/index.js");
 
 exports.showUsersById = async (req, res) => {
   const id = req.params.id;
   try {
     console.info(req.method, req.url);
+    console.log("Searching for user with Id:", id);
     const userRecord = await usersCollection.doc(id).get();
     if (!userRecord.exists) {
       res.status(404).send({ message: "User not found" });
@@ -13,6 +16,40 @@ exports.showUsersById = async (req, res) => {
       res.status(200).send({
         message: "Successfully retrieved user data by ID!",
         status: 200,
+        id: userRecord.id,
+        data: {
+          username: userData.username,
+          email: userData.email,
+          domicile: userData.domicile,
+          birthDate: userData.birthDate,
+        }
+      });
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+};
+
+exports.showUsersByEmail = async (req, res) => {
+  const email = req.params.email;
+  try {
+    console.info(req.method, req.url);
+    console.log("Searching for user with email:", email);
+
+    const querySnapshot = await usersCollection.where('email', '==', email).get();
+
+    // console.log("Query result:", querySnapshot.docs.map(doc => doc.data()));
+
+    if (querySnapshot.empty) {
+      res.status(404).send({ message: "User not found" });
+    } else {
+      const userId = querySnapshot.docs[0]
+      const userData = userId.data();
+      res.status(200).send({
+        message: "Successfully retrieved user data by email!",
+        status: 200,
+        id: userId.id,
         data: {
           username: userData.username,
           email: userData.email,
@@ -87,7 +124,6 @@ exports.deleteUsers = async (req, res) => {
     res.status(500).send({ error: "Internal Server Error" });
   }
 };
-
 
 exports.createUsers = async (req, res) => {
   const id = req.params.id;
@@ -190,7 +226,14 @@ exports.loginUsers = async (req, res) => {
       if (!passwordMatch) {
         res.status(404).send({ message: "Incorrect password" });
       } else {
-        res.status(200).send({ message: "Login successfully" });
+        jwt.sign(userData, 'secret', { expiresIn: '1h' }, (err, token) => {
+          if (err) {
+            console.error("Error generating token:", err);
+            res.status(500).send({ error: "Internal Server Error" });
+            return;
+          }
+          res.status(200).send({ message: "Login successfully", token });
+        });        
       }
     }
   } catch (error) {
@@ -199,10 +242,14 @@ exports.loginUsers = async (req, res) => {
   }
 };
 
-
 exports.logoutUsers = (req, res) => {
   try {
     //blacklist token here
+    const token = req.headers.authorization.split(" ")[1];
+    
+    // Tambahkan token ke dalam daftar hitam
+    blacklistToken(token);
+    res.clearCookie('token');
 
     res.status(200).send({ message: "Logout successful" });
   } catch (error) {

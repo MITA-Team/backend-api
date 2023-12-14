@@ -1,12 +1,20 @@
+@base_url = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRTU2lUSjdnTEQ3aXVOaFhIenFiR0h1OVFFTFkuUlZsTkwxbXNxTnlEcjhOVkFxVTBBZ0VYNiIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjEyMzQ1Njc4IiwiZW1haWwiOiJvbmVzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJvbmUiLCJpYXQiOjE3MDI1NzQwMDN9.ZjD3Q3FqN4tAqxh2L0VSscx-mayO0U0zkYB35zfGalo
+
 ### GET All Child
-GET http://localhost:8080/api/child/all
+GET {{base_url}}/api/child/all
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ### GET Child by Id
-GET http://localhost:8080/api/child/DndDLpRT4195V69kVTWJ
+GET {{base_url}}/api/child/DndDLpRT4195V69kVTWJ
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ### POST Data Child
-POST http://localhost:8080/api/child
+POST {{base_url}}/api/child
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "name": "XxxX",
@@ -21,8 +29,9 @@ Content-Type: application/json
 }
 
 ### UPDATE Child
-PUT http://localhost:8080/api/child/DndDLpRT4195V69kVTWJ
+PUT {{base_url}}/api/child/DndDLpRT4195V69kVTWJ
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "name": "xVFx",
@@ -37,4 +46,6 @@ Content-Type: application/json
 }
 
 ### DELETE Child
-DELETE http://localhost:8080/api/child/KWFyFGxUogkQAU7GdjQ8
+DELETE {{base_url}}/api/child/KWFyFGxUogkQAU7GdjQ8
+Content-Type: application/json
+Authorization: Bearer {{token}}

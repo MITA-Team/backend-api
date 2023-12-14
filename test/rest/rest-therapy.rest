@@ -1,12 +1,20 @@
+@base_url = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRTU2lUSjdnTEQ3aXVOaFhIenFiR0h1OVFFTFkuUlZsTkwxbXNxTnlEcjhOVkFxVTBBZ0VYNiIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjEyMzQ1Njc4IiwiZW1haWwiOiJvbmVzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJvbmUiLCJpYXQiOjE3MDI1NzQwMDN9.ZjD3Q3FqN4tAqxh2L0VSscx-mayO0U0zkYB35zfGalo
+
 ### GET All Therapy
-GET http://localhost:8080/api/therapy/all
+GET {{base_url}}/api/therapy/all
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ### GET Therapy by Id
-GET http://localhost:8080/api/therapy/MyCAK7CmRVcj26VlDoXG
+GET {{base_url}}/api/therapy/MyCAK7CmRVcj26VlDoXG
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ### POST Therapy Recommendation
-POST http://localhost:8080/api/therapy
+POST {{base_url}}/api/therapy
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "category": "A2",

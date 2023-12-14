@@ -2,6 +2,10 @@
 logs
 coverage
 
+# Notes
+catatan.md
+test/rest/*
+
 # Key
 serviceAccountKey.json
 
