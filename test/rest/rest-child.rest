@@ -1,0 +1,40 @@
+### GET All Child
+GET http://localhost:8080/api/child/all
+
+### GET Child by Id
+GET http://localhost:8080/api/child/DndDLpRT4195V69kVTWJ
+
+### POST Data Child
+POST http://localhost:8080/api/child
+Content-Type: application/json
+
+{
+    "name": "XxxX",
+    "born": "30/02/2077",
+    "city": "Cyber park",
+    "gender": "Boys",
+    "diagnose": "Little Crazy",
+    "recommendation": [
+        "Speech therapy",
+        "Social therapy"
+    ]
+}
+
+### UPDATE Child
+PUT http://localhost:8080/api/child/DndDLpRT4195V69kVTWJ
+Content-Type: application/json
+
+{
+    "name": "xVFx",
+    "born": "30/02/2077",
+    "city": "Cyber park",
+    "gender": "Boys",
+    "diagnose": "Little Crazy",
+    "recommendation": [
+        "Speech therapy",
+        "Social therapy"
+    ]
+}
+
+### DELETE Child
+DELETE http://localhost:8080/api/child/KWFyFGxUogkQAU7GdjQ8

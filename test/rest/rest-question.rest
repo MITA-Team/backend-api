@@ -1,0 +1,22 @@
+### Welcome
+GET http://35.222.125.122/api/question/all
+
+### GET All Soal
+GET http://localhost:8080/api/question/all
+
+### GET Soal by Id
+GET http://localhost:8080/api/question/5Z8t1e7aEGgDUafSdAN0
+
+### POST Soal
+POST http://localhost:8080/api/question
+Content-Type: application/json
+
+{
+  "question": "Apakah anak Tidak melihat ketika namanya dipanggil",
+  "category": "A5",
+  "type": [
+    "Speech/Language/Communication",
+    "Sociability",
+    "Sensori/Kognitif"
+  ]
+}
