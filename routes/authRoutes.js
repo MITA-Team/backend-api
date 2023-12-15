@@ -1,4 +1,5 @@
 module.exports = (app) => {
+  const welcomeController = require("../controllers/welcomeController.js");
   const questController = require("../controllers/questController.js");
   const therapyController = require("../controllers/therapyController.js");
   const userController = require("../controllers/userController.js");
@@ -10,7 +11,7 @@ module.exports = (app) => {
   const router = require("express").Router();
 
   // Welcome
-  router.get("/", questController.welcome);
+  router.get("/", welcomeController.welcome);
 
   // Question
   router.get("/question/all", verifyToken, questController.showQuestion);

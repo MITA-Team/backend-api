@@ -9,7 +9,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyY
 ### GET User by Email
 GET {{base_url}}/api/users/email/onesimusx@gmail.com
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRTU2lUSjdnTEQ3aXVOaFhIenFiR0h1OVFFTFkuUlZsTkwxbXNxTnlEcjhOVkFxVTBBZ0VYNiIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjEyMzQ1Njc4IiwiZW1haWwiOiJvbmVzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJvbmUiLCJpYXQiOjE3MDI1NzcxOTksImV4cCI6MTcwMjU3NzIyOX0.a1nHHnDweIIooYU2am-im-zAHeD42RAn1uiH1Oes9vA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRTU2lUSjdnTEQ3aXVOaFhIenFiR0h1OVFFTFkuUlZsTkwxbXNxTnlEcjhOVkFxVTBBZ0VYNiIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjEyMzQ1Njc4IiwiZW1haWwiOiJvbmVzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJvbmUiLCJpYXQiOjE3MDI2NzU4NjMsImV4cCI6MTcwMjY3OTQ2M30.vf9cz6HNset3UEZmIK2LLLJTwnodfwRSQ0pyW2io9zE
 
 ### POST login
 POST {{base_url}}/api/users/login
@@ -23,6 +23,7 @@ Content-Type: application/json
 ### PUT User by Id
 PUT {{base_url}}/api/users/update/Z1KiPS9E4JDuGXG5T91Q
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRTU2lUSjdnTEQ3aXVOaFhIenFiR0h1OVFFTFkuUlZsTkwxbXNxTnlEcjhOVkFxVTBBZ0VYNiIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjEyMzQ1Njc4IiwiZW1haWwiOiJvbmVzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJvbmUiLCJpYXQiOjE3MDI2NzU4NjMsImV4cCI6MTcwMjY3OTQ2M30.vf9cz6HNset3UEZmIK2LLLJTwnodfwRSQ0pyW2io9zE
 
 {
     "username" : "one",
@@ -37,17 +38,17 @@ DELETE {{base_url}}/api/users/delete/Z1KiPS9E4JDuGXG5T91Q
 ### POST LOGOUT
 POST {{base_url}}/api/users/logout
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRTU2lUSjdnTEQ3aXVOaFhIenFiR0h1OVFFTFkuUlZsTkwxbXNxTnlEcjhOVkFxVTBBZ0VYNiIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjEyMzQ1Njc4IiwiZW1haWwiOiJvbmVzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJvbmUiLCJpYXQiOjE3MDI1NzgzNDgsImV4cCI6MTcwMjU4MTk0OH0.5IHRYQDU5Ri0q13lihhrJ-y5whP_Fz71aTHH0bOjGlI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRTU2lUSjdnTEQ3aXVOaFhIenFiR0h1OVFFTFkuUlZsTkwxbXNxTnlEcjhOVkFxVTBBZ0VYNiIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjEyMzQ1Njc4IiwiZW1haWwiOiJvbmVzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJvbmUiLCJpYXQiOjE3MDI2NzU4NjMsImV4cCI6MTcwMjY3OTQ2M30.vf9cz6HNset3UEZmIK2LLLJTwnodfwRSQ0pyW2io9zE
 
 ### POST REGISTER Data user
 POST {{base_url}}/api/users/register
 Content-Type: application/json
 
 {
-    "username" : "one",
-    "email" : "onesimusx@gmail.com",
+    "username" : "four",
+    "email" : "foursimusx@gmail.com",
     "domicile" :  "jakarta",
-    "birthDate" : "12345678",
+    "birthDate" : "01/01/2001",
     "password" :  "12345678",
     "confirmPass" : "12345678"
 }

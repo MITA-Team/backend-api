@@ -174,6 +174,7 @@ exports.createUsers = async (req, res) => {
       status: 201,
       data: {
         id: userData.id,
+        ...newUser
       }
     });
   } catch (error) {

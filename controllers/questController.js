@@ -1,31 +1,5 @@
 const { questCollection } = require("../app/config");
 
-exports.welcome = (req, res) => {
-  res.send({
-    message: "Welcome to MITA APP API.",
-    status: 200,
-    content: {
-      "user" : [
-        "GET /api/user/all",
-        "GET /api/user/:id",
-        "GET /user/email/:email",
-      ],
-      "child" : [
-        "GET /api/child/all",
-        "GET /api/child/:id",
-      ],
-      "question" : [
-        "GET /api/question/all",
-        "GET /api/question/:id",
-      ],
-      "therapy" : [
-        "GET /api/therapy/all",
-        "GET /api/therapy/:id",
-      ],
-    },
-  });
-};
-
 exports.showQuestion = async (req, res) => {
   try {
     console.info(req.method, req.url);
