@@ -43,4 +43,5 @@ npm run test:coverage
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-[![All Contributors](https://img.shields.io/github/all-contributors/projectOwner/projectName?color=ee8449&style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/github/all-contributors/MITA-Team/backend-api?color=ee8449&style=flat-square)](#contributors)
+[![Star on GitHub](https://img.shields.io/github/stars/MITA-Team/backend-api.svg?style=social)](https://github.com/all-contributors/all-contributors/stargazers)
