@@ -1,4 +1,5 @@
 const { childCollection } = require("../app/config");
+const axios = require('axios');
 
 exports.showChild = async (req, res) => {
   try {
@@ -21,7 +22,7 @@ exports.createChild = async (req, res) => {
     console.info(req.method, req.url);
     console.info(req.body);
 
-    const expectedFormat = ["name", "born", "city", "gender", "diagnose", "recommendation"];
+    const expectedFormat = ["name", "born", "city", "gender"];
 
     const inputFormat = Object.keys(req.body);
 
@@ -92,7 +93,7 @@ exports.updateChild = async (req, res) => {
       return;
     }
 
-    const expectedFormat = ["name", "born", "city", "gender", "diagnose", "recommendation"];
+    const expectedFormat = ["name", "born", "city", "gender"];
 
     const inputFormat = Object.keys(req.body);
 
@@ -110,6 +111,10 @@ exports.updateChild = async (req, res) => {
     const data = req.body;
 
     await childCollection.doc(id).update({ data });
+    // const recommendations = await getRecommendationsFromPython(data);
+
+    // data.recommendation = recommendations;
+    // await childCollection.doc(id).update(data);
 
     res.send({
       message: "Successfully updated child data by ID!",
@@ -144,3 +149,126 @@ exports.deleteChild = async (req, res) => {
     res.status(500).send({ error: "Internal Server Error" });
   }
 };
+
+exports.submitTestResults = async (req, res) => {
+  try {
+    console.info(req.method, req.url);
+    console.info(req.body);
+
+    // Extract the childId from the request parameters
+    const childId = req.params.id;
+
+    // Your existing code for validating and processing input
+    const testData = req.body;
+
+    // Validate that testData has a valid childId
+    if (!childId || typeof childId !== 'string') {
+      throw new Error('Invalid childId provided in the request parameters.');
+    }
+
+    // Call the function to get recommendations from Python server
+    const recommendations = await getRecommendationsFromPython(testData);
+
+    // Log the recommendations received from the Python server
+    console.info('Recommendations from Python server:', recommendations);
+
+    // Ensure that recommendations is defined before updating the document
+    if (!recommendations || recommendations.length === 0) {
+      throw new Error('No recommendations received from the Python server.');
+    }
+
+    // Update the recommendation field in the child's account
+    await childCollection.doc(childId).update({
+      recommendation: recommendations,
+    });
+
+    const response = {
+      message: 'Test results submitted successfully!',
+      status: 200,
+      data: {
+        childId: childId,
+        recommendations: recommendations,
+      },
+    };
+
+    res.status(response.status).send(response);
+  } catch (error) {
+    console.error('Error submitting test results:', error);
+    res.status(500).send({ error: error.message || 'Internal Server Error' });
+  }
+};
+
+exports.updateResultChild = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    console.info(req.method, req.url);
+    console.info(req.body);
+
+    const userRecord = await childCollection.doc(id).get();
+    if (!userRecord.exists) {
+      res.status(404).send({ message: "Child not found" });
+      return;
+    }
+
+    const expectedFormat = ["name", "born", "city", "gender"];
+
+    const inputFormat = Object.keys(req.body);
+
+    const availabeFormat = expectedFormat.every((key) => inputFormat.includes(key));
+
+    const hasNoExtraFormat = inputFormat.every((key) => expectedFormat.includes(key));
+
+    if (!availabeFormat || !hasNoExtraFormat) {
+        return res.status(400).send({
+          error: "Invalid request format. Please provide all required fields without extra fields.",
+        });
+      }
+
+    delete req.params.id;
+    const data = req.body;
+
+    const recommendations = await getRecommendationsFromPython(data);
+
+    data.recommendation = recommendations;
+    await childCollection.doc(id).update(data);
+
+    res.send({
+      message: "Successfully updated child data by ID!",
+      status: 200,
+      data,
+    });
+  } catch (error) {
+    console.error("Error updating child data:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+};
+
+async function getRecommendationsFromPython(data) {
+  try {
+    const pythonServerUrl = 'http://34.101.192.86/predict'; 
+    
+    const response = await axios.post(pythonServerUrl, data);
+
+    // Ensure that the response contains recommendations
+    if (!response.data || !response.data.top_predictions) {
+      throw new Error('No recommendations received from the Python server.');
+    }
+
+    const predictions = response.data;
+
+    // Display predicted label
+    console.log('Predicted Label:', predictions.prediction_asd);
+
+    // Display image URL
+    console.log('Image URL:', predictions.image);
+
+    // Display top predictions
+    console.log('Top Predictions:', predictions.top_predictions);
+
+    return response.data;
+  } catch (error) {
+    console.error("Error getting recommendations from Python server:", error);
+    throw new Error("Failed to get recommendations from Python server");
+  }
+}
