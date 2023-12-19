@@ -131,13 +131,19 @@ exports.createUsers = async (req, res) => {
 
   try {
     console.info(req.method, req.url);
-    console.info(req.body);
 
     // exist user
-    const existingUser = await usersCollection.where('email', '==', newUser.email).get();
-    if (!existingUser.empty) {
+    const existingEmail = await usersCollection.where('email', '==', newUser.email).get();
+    if (!existingEmail.empty) {
       return res.status(400).send({
         error: "Email is already in use.",
+      });
+    }
+
+    const existingUsername = await usersCollection.where('username', '==', newUser.username).get();
+    if (!existingUsername.empty) {
+      return res.status(400).send({
+        error: "Username is already in use.",
       });
     }
 
@@ -177,6 +183,7 @@ exports.createUsers = async (req, res) => {
         ...newUser
       }
     });
+    console.info(req.body);
   } catch (error) {
     console.error("Error adding data:", error);
     res.status(500).send({ error: "Internal Server Error",});
@@ -190,6 +197,20 @@ exports.loginUsers = async (req, res) => {
     console.info(req.method, req.url);
     console.info(req.body);
 
+    const expectedFormat = ["identifier", "password"];
+
+    const inputFormat = Object.keys(req.body);
+
+    const availabeFormat = expectedFormat.every((key) => inputFormat.includes(key));
+
+    const hasNoExtraFormat = inputFormat.every((key) => expectedFormat.includes(key));
+
+    if (!availabeFormat || !hasNoExtraFormat) {
+      return res.status(400).send({
+        error: "Invalid request format. Please provide all required fields without extra fields.",
+      });
+    }
+
     if (!loginUsers.identifier || !loginUsers.password) {
       return res.status(400).send({
         error: "Invalid request. Please provide both identifier and password.",
@@ -202,12 +223,12 @@ exports.loginUsers = async (req, res) => {
 
     if (userRecord.empty) {
       const userRecordByUsername = await usersCollection
-        .where('username', '==', loginUsers.identifier)
+        .where('email', '==', loginUsers.identifier)
         .get();
 
       if (userRecordByUsername.empty) {
         return res.status(400).send({
-          error: "User not found. Please register an account.",
+          error: "email not found. Please register an account.",
         });
       }
 
