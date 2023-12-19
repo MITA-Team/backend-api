@@ -45,6 +45,7 @@ module.exports = (app) => {
   router.get("/child/all", verifyToken, childController.showChild);
   router.get("/child/:id", verifyToken, childController.showChildById);
   router.post("/child/", verifyToken, childController.createChild);
+  router.post("/child/submit/:id", verifyToken, childController.submitTestResults);
   router.put("/child/:id", verifyToken, childController.updateChild);
   router.delete("/child/:id", verifyToken, childController.deleteChild);
 

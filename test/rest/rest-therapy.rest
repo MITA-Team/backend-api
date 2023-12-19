@@ -1,5 +1,5 @@
-@base_url = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRTU2lUSjdnTEQ3aXVOaFhIenFiR0h1OVFFTFkuUlZsTkwxbXNxTnlEcjhOVkFxVTBBZ0VYNiIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjEyMzQ1Njc4IiwiZW1haWwiOiJvbmVzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJvbmUiLCJpYXQiOjE3MDI1NzQwMDN9.ZjD3Q3FqN4tAqxh2L0VSscx-mayO0U0zkYB35zfGalo
+@base_url = http://34.128.115.4
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRCWlUzVjFkVGxmZ1ZHVDFvQUpWdWhPNHdrSWwvS2hKdS5vTDkzLk5wYjFHZlhPbGM4anZmeSIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjAxLzAxLzIwMDEiLCJlbWFpbCI6ImZvdXJzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJmb3VyIiwiaWF0IjoxNzAyODY1MDQzLCJleHAiOjE3MDI4Njg2NDN9.Z473mGQvhUtwJ8a1KHV3iEIS-Hepb3XQLnNcZ49-iUs
 
 ### GET All Therapy
 GET {{base_url}}/api/therapy/all
@@ -7,7 +7,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ### GET Therapy by Id
-GET {{base_url}}/api/therapy/MyCAK7CmRVcj26VlDoXG
+GET {{base_url}}/api/therapy/PBKRgRWeaQGsjy4GrL3k
 Content-Type: application/json
 Authorization: Bearer {{token}}
 

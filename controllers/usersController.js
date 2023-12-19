@@ -115,6 +115,12 @@ exports.deleteUsers = async (req, res) => {
 
     await usersCollection.doc(id).delete();
 
+    const token = req.headers.authorization.split(" ")[1];
+    
+    // Tambahkan token ke dalam daftar hitam
+    blacklistToken(token);
+    res.clearCookie('token');
+
     res.status(200).send({
       message: "Successfully deleted user data by ID!",
       status: 200,
