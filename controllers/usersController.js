@@ -201,7 +201,6 @@ exports.loginUsers = async (req, res) => {
 
   try {
     console.info(req.method, req.url);
-    console.info(req.body);
 
     const expectedFormat = ["identifier", "password"];
 
@@ -260,6 +259,7 @@ exports.loginUsers = async (req, res) => {
             res.status(500).send({ error: "Internal Server Error" });
             return;
           }
+          console.info(userData);
           res.status(200).send({ message: "Login successfully", token });
         });        
       }
@@ -278,7 +278,7 @@ exports.logoutUsers = (req, res) => {
     // Tambahkan token ke dalam daftar hitam
     blacklistToken(token);
     res.clearCookie('token');
-
+    console.log("Logout successful", req.url);
     res.status(200).send({ message: "Logout successful" });
   } catch (error) {
     console.error("Error during logout:", error);

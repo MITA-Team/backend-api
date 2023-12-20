@@ -111,10 +111,6 @@ exports.updateChild = async (req, res) => {
     const data = req.body;
 
     await childCollection.doc(id).update({ data });
-    // const recommendations = await getRecommendationsFromPython(data);
-
-    // data.recommendation = recommendations;
-    // await childCollection.doc(id).update(data);
 
     res.send({
       message: "Successfully updated child data by ID!",
@@ -155,29 +151,22 @@ exports.submitTestResults = async (req, res) => {
     console.info(req.method, req.url);
     console.info(req.body);
 
-    // Extract the childId from the request parameters
     const childId = req.params.id;
 
-    // Your existing code for validating and processing input
     const testData = req.body;
 
-    // Validate that testData has a valid childId
     if (!childId || typeof childId !== 'string') {
       throw new Error('Invalid childId provided in the request parameters.');
     }
 
-    // Call the function to get recommendations from Python server
     const recommendations = await getRecommendationsFromPython(testData);
 
-    // Log the recommendations received from the Python server
     console.info('Recommendations from Python server:', recommendations);
 
-    // Ensure that recommendations is defined before updating the document
     if (!recommendations || recommendations.length === 0) {
       throw new Error('No recommendations received from the Python server.');
     }
 
-    // Update the recommendation field in the child's account
     await childCollection.doc(childId).update({
       recommendation: recommendations,
     });
@@ -250,20 +239,16 @@ async function getRecommendationsFromPython(data) {
     
     const response = await axios.post(pythonServerUrl, data);
 
-    // Ensure that the response contains recommendations
     if (!response.data || !response.data.top_predictions) {
       throw new Error('No recommendations received from the Python server.');
     }
 
     const predictions = response.data;
 
-    // Display predicted label
     console.log('Predicted Label:', predictions.prediction_asd);
 
-    // Display image URL
     console.log('Image URL:', predictions.image);
 
-    // Display top predictions
     console.log('Top Predictions:', predictions.top_predictions);
 
     return response.data;
