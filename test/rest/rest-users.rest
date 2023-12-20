@@ -1,0 +1,55 @@
+@base_url = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRVV3BMcWZ0ZmxhdmhNcWxWMTh3M05PNGsvTkNHS2h3T05HeW1pc1MuSVVzcklDSXZJTFVaUyIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjAxLzAxLzIwMDEiLCJlbWFpbCI6ImluYXBAZ21haWwuY29tIiwidXNlcm5hbWUiOiJpbmFwIiwiaWF0IjoxNzAyOTc3MDkxLCJleHAiOjE3MDI5ODA2OTF9.MIIt0mi7RjaiQ9AVUqkVKR4_UWZBVVxzHkREJDnJIPM
+
+### GET User by Id
+GET {{base_url}}/api/users/Z1KiPS9E4JDuGXG5T91Q
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### GET User by Email
+GET {{base_url}}/api/users/email/inap@gmail.com
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### POST login
+POST {{base_url}}/api/users/login
+Content-Type: application/json
+
+{
+    "identifier":"inap@gmail.com",
+    "password":"12345678"
+}
+
+### PUT User by Id
+PUT {{base_url}}/api/users/update/GaxtcPnbJil0zI6kVx7u
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "username" : "one",
+    "email" : "foursimusx@gmail.com",
+    "domicile":  "sulawesi",
+    "birthDate" : "123456"
+}
+
+### DELETE User
+DELETE {{base_url}}/api/users/delete/Avh9W6xE50CVmgHcR0y2
+Authorization: Bearer {{token}}
+
+### POST LOGOUT
+POST {{base_url}}/api/users/logout
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### POST REGISTER Data user
+POST {{base_url}}/api/users/register
+Content-Type: application/json
+
+{
+    "username" : "inap",
+    "email" : "inap@gmail.com",
+    "domicile" :  "jakarta",
+    "birthDate" : "01/01/2001",
+    "password" :  "12345678",
+    "confirmPass" : "12345678"
+}

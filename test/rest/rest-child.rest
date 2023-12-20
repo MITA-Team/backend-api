@@ -1,40 +1,41 @@
+@base_url = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRCWlUzVjFkVGxmZ1ZHVDFvQUpWdWhPNHdrSWwvS2hKdS5vTDkzLk5wYjFHZlhPbGM4anZmeSIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjAxLzAxLzIwMDEiLCJlbWFpbCI6ImZvdXJzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJmb3VyIiwiaWF0IjoxNzAyOTIwMDc3LCJleHAiOjE3MDI5MjM2Nzd9.u1fvJUXEnJYq4AR39k5YSjtJMzE4cjfwh6YobZ5uTkI
+
 ### GET All Child
-GET http://localhost:8080/api/child/all
+GET {{base_url}}/api/child/all
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ### GET Child by Id
-GET http://localhost:8080/api/child/DndDLpRT4195V69kVTWJ
+GET {{base_url}}/api/child/5repK3aHKsvFt0G4a1gb
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ### POST Data Child
-POST http://localhost:8080/api/child
+POST {{base_url}}/api/child
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "name": "XxxX",
     "born": "30/02/2077",
     "city": "Cyber park",
-    "gender": "Boys",
-    "diagnose": "Little Crazy",
-    "recommendation": [
-        "Speech therapy",
-        "Social therapy"
-    ]
+    "gender": "Gurl"
 }
 
 ### UPDATE Child
-PUT http://localhost:8080/api/child/DndDLpRT4195V69kVTWJ
+PUT {{base_url}}/api/child/5repK3aHKsvFt0G4a1gb
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "name": "xVFx",
     "born": "30/02/2077",
-    "city": "Cyber park",
-    "gender": "Boys",
-    "diagnose": "Little Crazy",
-    "recommendation": [
-        "Speech therapy",
-        "Social therapy"
-    ]
+    "city": "Cyber world",
+    "gender": "Boy"
 }
 
 ### DELETE Child
-DELETE http://localhost:8080/api/child/KWFyFGxUogkQAU7GdjQ8
+DELETE {{base_url}}/api/child/bWpGcUr1aWz2CuOd6q4l
+Content-Type: application/json
+Authorization: Bearer {{token}}

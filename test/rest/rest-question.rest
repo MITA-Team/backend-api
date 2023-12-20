@@ -1,19 +1,27 @@
+@base_url = http://localhost:8080
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRCWlUzVjFkVGxmZ1ZHVDFvQUpWdWhPNHdrSWwvS2hKdS5vTDkzLk5wYjFHZlhPbGM4anZmeSIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjAxLzAxLzIwMDEiLCJlbWFpbCI6ImZvdXJzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJmb3VyIiwiaWF0IjoxNzAyODE4NjIxLCJleHAiOjE3MDI4MjIyMjF9.GlQhGYSJnvznMOEZIHHEQ6DE9REuLR6-LXUZdEe7Z88
+
 ### Welcome
-GET http://35.222.125.122/api/question/all
+GET {{base_url}}/api/
 
 ### GET All Soal
-GET http://localhost:8080/api/question/all
+GET {{base_url}}/api/question/all
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ### GET Soal by Id
-GET http://localhost:8080/api/question/5Z8t1e7aEGgDUafSdAN0
+GET {{base_url}}/api/question/5Z8t1e7aEGgDUafSdAN0
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ### POST Soal
-POST http://localhost:8080/api/question
+POST {{base_url}}/api/question
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "question": "Apakah anak Tidak melihat ketika namanya dipanggil",
-  "category": "A5",
+  "category": "A50",
   "type": [
     "Speech/Language/Communication",
     "Sociability",

@@ -1,0 +1,172 @@
+openapi: "3.0.2"
+info:
+  title: API Docs for Address
+  version: "1.0"
+  description: API description
+  termsOfService: https://swagger.io/terms/
+  contact:
+    name: Nap
+    url: https://napuniverse.me
+    email: naffsvn@protonmail.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: 127.0.0.1
+
+paths:
+  # GET User by ID
+  /api/users/{id}:
+    get:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successfully retrieved user data by ID!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      username:
+                        type: string
+                      email:
+                        type: string
+                      domicile:
+                        type: string
+                      birthDate:
+                        type: string
+        "500":
+          description: Internal Server Error
+
+  # DELETE user by ID
+  /api/users/delete/{id}:
+    delete:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successfully deleted user data by ID!
+        "500":
+          description: Internal Server Error
+
+  # UPDATE user by ID
+  /api/users/update/{id}:
+    put:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                domicile:
+                  type: string
+                birthDate:
+                  type: string
+      responses:
+        "200":
+          description: Successfully updated user data!
+        "500":
+          description: Internal Server Error
+
+  # CREATE user 
+  /api/users/register:
+    post:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                domicile:
+                  type: string
+                birthDate:
+                  type: string
+                password:
+                  type: string
+                ConfirmPass:
+                  type: string
+      responses:
+        "200":
+          description: Successfully added data!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+        "500":
+          description: Internal Server Error
+
+  # LOGIN user 
+  /api/users/login:
+    post:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                identifier:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: Login successfully 
+        "500":
+          description: Internal Server Error
+
+  # LOGOUT user 
+  /api/users/logout:
+    post:
+      parameters:
+        - in: header
+          name: Authorization
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Logout successfully 
+        "500":
+          description: Internal Server Error
+
+
+
