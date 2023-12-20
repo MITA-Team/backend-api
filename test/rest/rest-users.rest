@@ -1,13 +1,13 @@
-@base_url = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRVV3BMcWZ0ZmxhdmhNcWxWMTh3M05PNGsvTkNHS2h3T05HeW1pc1MuSVVzcklDSXZJTFVaUyIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjAxLzAxLzIwMDEiLCJlbWFpbCI6ImluYXBAZ21haWwuY29tIiwidXNlcm5hbWUiOiJpbmFwIiwiaWF0IjoxNzAyOTc3MDkxLCJleHAiOjE3MDI5ODA2OTF9.MIIt0mi7RjaiQ9AVUqkVKR4_UWZBVVxzHkREJDnJIPM
+@base_url = http://34.128.115.4
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRheVI2R0VKZ043OGNSbkV5S2NTUDJleHdTbmJSTXVOOThWZnREZlJCZXhKaFBPY3laWnpaSyIsImVtYWlsIjoieWFudG9AZ21haWwuY29tIiwiZG9taWNpbGUiOiJiYW50ZW4iLCJiaXJ0aERhdGUiOiIxMjM0NTYiLCJ1c2VybmFtZSI6InlhbnRvIG9ueWEgZHVhIiwiaWF0IjoxNzAzMDkzNjk2LCJleHAiOjE3MDMwOTcyOTZ9.Qjcs0R5RCyOoFLBHDYkiRtdJRlR-xgvsiGALUHhoQxs
 
 ### GET User by Id
-GET {{base_url}}/api/users/Z1KiPS9E4JDuGXG5T91Q
+GET {{base_url}}/api/users/1V2oLl1MYTCOj3WVZniI
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ### GET User by Email
-GET {{base_url}}/api/users/email/inap@gmail.com
+GET {{base_url}}/api/users/email/yanto@gmail.com
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -16,24 +16,24 @@ POST {{base_url}}/api/users/login
 Content-Type: application/json
 
 {
-    "identifier":"inap@gmail.com",
+    "identifier":"yanto@gmail.com",
     "password":"12345678"
 }
 
 ### PUT User by Id
-PUT {{base_url}}/api/users/update/GaxtcPnbJil0zI6kVx7u
+PUT {{base_url}}/api/users/update/Gb54Igvwkye9EZha8Xta
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "username" : "one",
-    "email" : "foursimusx@gmail.com",
-    "domicile":  "sulawesi",
+    "username" : "yanto onya dua",
+    "email" : "yanto@gmail.com",
+    "domicile":  "banten",
     "birthDate" : "123456"
 }
 
 ### DELETE User
-DELETE {{base_url}}/api/users/delete/Avh9W6xE50CVmgHcR0y2
+DELETE {{base_url}}/api/users/delete/1V2oLl1MYTCOj3WVZniI
 Authorization: Bearer {{token}}
 
 ### POST LOGOUT
@@ -46,8 +46,8 @@ POST {{base_url}}/api/users/register
 Content-Type: application/json
 
 {
-    "username" : "inap",
-    "email" : "inap@gmail.com",
+    "username" : "yanto",
+    "email" : "yanto@gmail.com",
     "domicile" :  "jakarta",
     "birthDate" : "01/01/2001",
     "password" :  "12345678",

@@ -1,5 +1,5 @@
-@base_url = http://localhost:8080
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRCWlUzVjFkVGxmZ1ZHVDFvQUpWdWhPNHdrSWwvS2hKdS5vTDkzLk5wYjFHZlhPbGM4anZmeSIsImRvbWljaWxlIjoiamFrYXJ0YSIsImJpcnRoRGF0ZSI6IjAxLzAxLzIwMDEiLCJlbWFpbCI6ImZvdXJzaW11c3hAZ21haWwuY29tIiwidXNlcm5hbWUiOiJmb3VyIiwiaWF0IjoxNzAyOTIwMDc3LCJleHAiOjE3MDI5MjM2Nzd9.u1fvJUXEnJYq4AR39k5YSjtJMzE4cjfwh6YobZ5uTkI
+@base_url = http://34.128.115.4
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRheVI2R0VKZ043OGNSbkV5S2NTUDJleHdTbmJSTXVOOThWZnREZlJCZXhKaFBPY3laWnpaSyIsImVtYWlsIjoieWFudG9AZ21haWwuY29tIiwiZG9taWNpbGUiOiJiYW50ZW4iLCJiaXJ0aERhdGUiOiIxMjM0NTYiLCJ1c2VybmFtZSI6InlhbnRvIG9ueWEgZHVhIiwiaWF0IjoxNzAzMDYwNTAyLCJleHAiOjE3MDMwNjQxMDJ9.NrzG9j_pBNpBO5c1_RB7PrHZ8Efo9q5_o3cyzS1QGDo
 
 ### GET All Child
 GET {{base_url}}/api/child/all
@@ -17,10 +17,10 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "name": "XxxX",
+    "name": "yanti",
     "born": "30/02/2077",
     "city": "Cyber park",
-    "gender": "Gurl"
+    "gender": "Girl"
 }
 
 ### UPDATE Child
