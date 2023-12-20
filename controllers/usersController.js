@@ -253,7 +253,7 @@ exports.loginUsers = async (req, res) => {
       if (!passwordMatch) {
         res.status(404).send({ message: "Incorrect password" });
       } else {
-        jwt.sign(userData, 'secret', { expiresIn: '1h' }, (err, token) => {
+        jwt.sign(userData, 'secret', { expiresIn: '12h' }, (err, token) => {
           if (err) {
             console.error("Error generating token:", err);
             res.status(500).send({ error: "Internal Server Error" });
