@@ -7,6 +7,7 @@
     "test": "jest --runInBand",
     "test:watch": "jest --watch",
     "test:coverage": "jest --runInBand --coverage",
+    "test-login": "jest test/login.test.js",
     "start": "node .",
     "dev": "nodemon ."
   },

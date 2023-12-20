@@ -1,5 +1,5 @@
 @base_url = http://34.128.115.4
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRheVI2R0VKZ043OGNSbkV5S2NTUDJleHdTbmJSTXVOOThWZnREZlJCZXhKaFBPY3laWnpaSyIsImVtYWlsIjoieWFudG9AZ21haWwuY29tIiwiZG9taWNpbGUiOiJiYW50ZW4iLCJiaXJ0aERhdGUiOiIxMjM0NTYiLCJ1c2VybmFtZSI6InlhbnRvIG9ueWEgZHVhIiwiaWF0IjoxNzAzMDU5MjMyLCJleHAiOjE3MDMwNjI4MzJ9.3czL_aPNVJN6OrWA2pAJ8ybTM0xe8Ber6J8qEWitctQ
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6IiQyYiQxMCRheVI2R0VKZ043OGNSbkV5S2NTUDJleHdTbmJSTXVOOThWZnREZlJCZXhKaFBPY3laWnpaSyIsImVtYWlsIjoieWFudG9AZ21haWwuY29tIiwiZG9taWNpbGUiOiJiYW50ZW4iLCJiaXJ0aERhdGUiOiIxMjM0NTYiLCJ1c2VybmFtZSI6InlhbnRvIG9ueWEgZHVhIiwiaWF0IjoxNzAzMDkxOTM0LCJleHAiOjE3MDMwOTU1MzR9.wqtELhL1qVpkdy6ePZDqIhz7VdBDNylI5nd0Xegglws
 
 ### GET All Therapy
 GET {{base_url}}/api/therapy/all
@@ -7,7 +7,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ### GET Therapy by Id
-GET {{base_url}}/api/therapy/PBKRgRWeaQGsjy4GrL3k
+GET {{base_url}}/api/therapy/mcibDwQgzb0wQ1rLzLcC
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
