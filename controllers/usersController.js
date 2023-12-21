@@ -23,6 +23,7 @@ exports.showUsersById = async (req, res) => {
           email: userData.email,
           domicile: userData.domicile,
           birthDate: userData.birthDate,
+          recommendation: userData.recommendation
         }
       });
     }
@@ -56,6 +57,7 @@ exports.showUsersByEmail = async (req, res) => {
           email: userData.email,
           domicile: userData.domicile,
           birthDate: userData.birthDate,
+          recommendation: userData.recommendation
         }
       });
     }
