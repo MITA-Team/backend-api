@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const { usersCollection } = require("../app/config");
 const jwt = require("jsonwebtoken");
 const { blacklistToken } = require("../middleware/index.js");
+const axios = require('axios');
 
 exports.showUsersById = async (req, res) => {
   const id = req.params.id;
@@ -286,4 +287,101 @@ exports.logoutUsers = (req, res) => {
   }
 };
 
+exports.submitTestResults = async (req, res) => {
+  try {
+    console.info(req.method, req.url)
+    console.info(req.body)
 
+    const usersId = req.params.id
+    const testData = req.body;
+
+    if (!usersId || typeof usersId !== 'string'){
+      throw new Error('Invalid usersId provided in the request parameters.');
+    }
+
+    const recommendations = await getRecommendationsFromPython(testData);
+
+    console.info('Recommendations from Python server:', recommendations);
+
+    if (!recommendations || recommendations.length === 0){
+      throw new Error('No recommendations found from Python server.');
+    }
+
+    await usersCollection.doc(usersId).update({
+      recommendation: recommendations,
+    });
+
+    const response = {
+      message: 'Test results submitted successfully!',
+      status: 200,
+      data: {
+        usersId: usersId,
+        recommendations: recommendations,
+      },
+    };
+
+    res.status(response.status).send(response);
+  } catch (error){
+    console.error('Error submitting test results:', error);
+    res.status(500).send({ error: error.message || 'Internal Server Error' });
+  }
+}
+
+exports.updateResultUsers = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    console.info(req.method, req.url);
+    console.info(req.body);
+
+    const userRecord = await usersCollection.doc(id).get();
+    if (!userRecord.exists) {
+      res.status(404).send({ message: "User not found" });
+      return;
+    }
+
+    delete req.params.id;
+    const data = req.body;
+
+    const recommendations = await getRecommendationsFromPython(data);
+
+    data.recommendation = recommendations;
+    await usersCollection.doc(id).update(data);
+
+    res.send({
+      message: "Data updated successfully!",
+      status: 200,
+      data: {
+        id: id,
+        data: data,
+      },
+    })
+
+  } catch (error) {
+    console.error("Error updating data:", error);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
+}
+
+async function getRecommendationsFromPython(data) {
+  try {
+    const pythonServerUrl = 'http://34.101.192.86/predict';
+    const response = await axios.post(pythonServerUrl, data);
+
+    if (!response.data || !response.data.top_predictions){
+      throw new Error('No recommendations received from the Python server.');
+    }
+
+    const predictions = response.data;
+
+    console.log('Predicted Label:', predictions.prediction_asd);
+    console.log('Image URL:', predictions.image);
+    console.log('Top Predictions:', predictions.top_predictions);
+
+    return response.data;
+
+  } catch (error) {
+    console.error('Error fetching recommendations from Python server:', error);
+    throw new Error('Failed to get recommendations from Python server');
+  }
+}

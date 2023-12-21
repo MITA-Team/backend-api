@@ -1,7 +1,5 @@
-// middleware/index.js
 const jwt = require("jsonwebtoken");
 
-// Contoh daftar hitam menggunakan Set
 const blacklist = new Set();
 
 function verifyToken(req, res, next) {

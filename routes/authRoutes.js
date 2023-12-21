@@ -41,7 +41,9 @@ module.exports = (app) => {
   router.post("/users/logout", verifyToken, usersController.logoutUsers);
   router.post("/users/register", usersController.createUsers);
 
-  // Child
+  router.post("/users/submit/:id", verifyToken, usersController.submitTestResults);
+
+  // Child (Disabled)
   router.get("/child/all", verifyToken, childController.showChild);
   router.get("/child/:id", verifyToken, childController.showChildById);
   router.post("/child/", verifyToken, childController.createChild);
