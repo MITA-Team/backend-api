@@ -2,14 +2,19 @@
 
 [![Actions Status](https://github.com/MITA-Team/backend-api/workflows/Node.js%20Test/badge.svg)](https://github.com/MITA-Team/backend-api/actions)
 [![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg?)](https://github.com/MITA-Team/backend-api/actions)
+[![Release date](https://img.shields.io/github/release-date/MITA-Team/backend-api)](https://packagist.org/packages/MITA-Team/backend-api)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)](https://github.com/MITA-Team/backend-api/releases)
-![GitHub top language](https://img.shields.io/github/languages/top/MITA-Team/backend-api?color=yellow)
 ![GitHub issues](https://img.shields.io/github/issues/MITA-Team/backend-api?color=red)
 ![GitHub watchers](https://img.shields.io/github/watchers/MITA-Team/backend-api?color=violet)
 
-
 ## Branch utama
+
+### Last update : 
+
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/MITA-Team/backend-api/main)
+
+
 ```
 git clone https://github.com/MITA-Team/backend-api.git
 ```
@@ -18,6 +23,19 @@ Branch utama ini nunggu clear semua atau minor bugs, baru update.
 
 
 ## Branch Develop
+
+### Last update :
+
+`dev-branch`
+
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/MITA-Team/backend-api/dev-branch)
+
+`Mita-API`
+
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/MITA-Team/backend-api/Mita-API)
+
+## Usage
+
 ```
 git clone -b dev https://github.com/MITA-Team/backend-api.git
 ```
@@ -28,6 +46,12 @@ git clone -b dev https://github.com/MITA-Team/backend-api.git
 ```
 npm i
 ```
+
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/MITA-Team/backend-api/dev/jest/main)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/MITA-Team/backend-api/dev/supertest/main)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/MITA-Team/backend-api/dev/babel-jest/main)
+![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/MITA-Team/backend-api/dev/nodemon/main)
+
 
 2. Masukin service account key
 
